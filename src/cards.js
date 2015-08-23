@@ -51,7 +51,7 @@ export class Cards {
         }
 
         var fetchme = `cards${this.nextSearch}`;
-        logger.debug(`Fetching API: ${fetchme}`);
+        // logger.debug(`Fetching API: ${fetchme}`);
         this.isFetching = true;
         var response = await this.http.fetch(fetchme);
         var json = await response.json();
