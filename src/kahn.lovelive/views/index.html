@@ -1,0 +1,17 @@
+<template>
+  <section>
+      <h2>${heading}</h2>
+      <div class="row au-stagger">
+        <div class="col-sm-6 col-md-3 card-container" repeat.for="card of cards">
+
+          <require from='../templates/card-round'></require>
+          <card-round card.bind="card"></card-round>
+        </div>
+      </div>
+      <div class="row">
+        <div class="btn-group" role="group">
+          <button show.bind="!isFetching" click.trigger="pullNext()" type="button" class="btn btn-default">Fetch More ...</button>
+        </div>
+      </div>
+  </section>
+</template>
