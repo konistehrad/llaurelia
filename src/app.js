@@ -1,13 +1,16 @@
-export class Welcome{
-    heading = 'Welcome to the Aurelia Navigation App!';
-    firstName = 'John';
-    lastName = 'Doe';
+import 'bootstrap';
+import 'bootstrap/css/bootstrap.css!';
+import 'styles/styles.css!';
 
-    get fullName(){
-        return `${this.firstName} ${this.lastName}`;
-    }
+export class App {
+  configureRouter(config, router){
+    config.title = 'Aurelia';
+    config.map([
+      { route: ['','welcome'],  name: 'welcome',      moduleId: 'welcome',      nav: true, title:'Welcome' },
+      { route: 'users',         name: 'users',        moduleId: 'users',        nav: true, title:'Github Users' },
+      { route: 'cards',         name: 'cards',        moduleId: 'cards',        nav: true, title:'Cards' },
+    ]);
 
-    submit(){
-        alert(`Welcome, ${this.fullName}!`);
-    }
+    this.router = router;
+  }
 }

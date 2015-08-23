@@ -1,0 +1,19 @@
+<template>
+  <section>
+      <h2>${heading}</h2>
+      <div class="row au-stagger">
+        <div class="col-sm-6 col-md-3 card-container" repeat.for="card of cards">
+            <div class="card">
+                <canvas class="header-bg" width="250" height="70"></canvas>
+                <div class="avatar">
+                    <img src.bind="card.round_card_image" crossorigin />
+                </div>
+                <div class="content">
+                    <p class="name">${card.name}</p>
+                    <p><a target="_blank" class="btn btn-default" href.bind="card.website_url">More Info</a></p>
+                </div>
+            </div>
+        </div>
+      </div>
+  </section>
+</template>
