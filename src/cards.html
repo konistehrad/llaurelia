@@ -6,13 +6,18 @@
             <div class="card">
                 <canvas class="header-bg" width="250" height="70"></canvas>
                 <div class="avatar">
-                    <img src.bind="card.round_card_image" crossorigin />
+                    <img src.one-way="card.round_card_image"  />
                 </div>
                 <div class="content">
                     <p class="name">${card.name}</p>
-                    <p><a target="_blank" class="btn btn-default" href.bind="card.website_url">More Info</a></p>
+                    <p><a target="_blank" class="btn btn-default" href.one-way="card.website_url">More Info</a></p>
                 </div>
             </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="btn-group" role="group">
+          <button show.bind="!isFetching" click.trigger="pullNext()" type="button" class="btn btn-default">Fetch More ...</button>
         </div>
       </div>
   </section>

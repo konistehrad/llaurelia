@@ -1,6 +1,5 @@
 import 'bootstrap';
 import 'bootstrap/css/bootstrap.css!';
-import 'styles/styles.css!';
 
 export class App {
   configureRouter(config, router){
