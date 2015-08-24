@@ -1,11 +1,12 @@
+import {inject} from 'aurelia-framework';
 import {LogManager} from 'aurelia-framework';
 import {CardStore} from '../models/cardstore';
 import 'fetch';
 
-const logger = LogManager.getLogger('cards-viewmodel'); // eslint-disable-line no-unused-vars
+const logger = LogManager.getLogger('card-detail-viewmodel');
 
-export class Cards {
-    heading = 'Love Live Cards';
+export class CardDetail {
+    heading = 'Idol Detail: ';
     get cards() { return CardStore.cards; }
     get cardLength() { return this.cards.length; }
     get totalLength() { return CardStore.totalLength; }
@@ -31,7 +32,7 @@ export class Cards {
         }
     }
 
-    __scrolled(/* ev */) {
+    __scrolled(ev) {
         this.__checkScroll();
     }
 

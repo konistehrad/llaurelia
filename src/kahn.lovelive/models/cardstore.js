@@ -1,9 +1,11 @@
 import {HttpClient} from 'aurelia-fetch-client';
 import {LogManager} from 'aurelia-framework';
 
-const logger = LogManager.getLogger('cardstore');
+const logger = LogManager.getLogger('cardstore');  // eslint-disable-line no-unused-vars
 const linkParser = document.createElement('a');
 class CardStore {
+    __allCards = new Map();
+    __matchedIds = [];
 	__cards = [];
 	__nextSearch = '';
 	__totalLength = 0;
@@ -26,8 +28,29 @@ class CardStore {
         this.__nextSearch = '';
     }
 
-    async pullNext(force = false) {
-        if( this.__isFetching || (this.__nextSearch === null && !force) ) {
+    async initialize() {
+
+    }
+
+    async getIdol(id) {
+
+    }
+
+    async setFilters(filters) {
+
+
+    }
+
+    async clearFilters() {
+
+    }
+
+    async pullNext() {
+        if( !this.__isInitialized ) {
+            await this.initialize();
+        }
+
+        if( this.__isFetching || !this.__hasNext ) {
             return Promise.resolve();
         }
 
@@ -48,8 +71,28 @@ class CardStore {
         this.__isFetching = false;
     }
 
+    async __pullLoop() {
+        while( this.__hasNext ) {
+            await this.pullNext();
+        }
+    }
+
+    __ensureInitialized() {
+        // if( !this.__isInitialized ) {
+            // this.__pullLoop();
+        // }
+    }
+
 
     get cards() {
+        return this.__cards;
+    }
+
+    get matchedCards() {
+        return this.__cards;
+    }
+
+    get rawCards() { 
         return this.__cards;
     }
 
@@ -64,9 +107,16 @@ class CardStore {
 	get isFetching() {
 		return this.__isFetching;
 	}
+
+    get __hasNext() {
+        return this.__nextSearch !== null;
+    }
+
+    get __isInitialized() {
+        return this.__cards.length > 0 || this.__isFetching;
+    }
 }
 
 var instance = new CardStore();
-
 export { instance as CardStore };
 
