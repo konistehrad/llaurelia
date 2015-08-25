@@ -1,3 +1,5 @@
+'use strict';
+
 var gulp = require('gulp');
 var paths = require('../paths');
 var jshint = require('gulp-jshint');
